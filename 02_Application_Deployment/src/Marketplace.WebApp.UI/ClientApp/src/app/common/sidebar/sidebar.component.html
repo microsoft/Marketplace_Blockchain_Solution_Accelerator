@@ -1,0 +1,74 @@
+<!--nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+              <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="users"></span>
+                    Home
+                  </a>
+                </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                <span data-feather="home"></span>
+                Dashboard <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file"></span>
+                Search
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="shopping-cart"></span>
+                Upload Logo
+              </a>
+            </li>
+          </ul>
+        </div>
+ </nav-->
+<nav class="sidebar">
+  <a
+    href="#"
+    role="button"
+    aria-pressed="true"
+    class="btn btn-secondary btn-user"
+  >
+    <i class="fa fa-home fa-2x mt-3"></i>
+    <div>Home</div>
+  </a>
+  <a
+    [routerLink]="['/admin']"
+    role="button"
+    aria-pressed="true"
+    class="btn btn-secondary btn-user"
+  >
+    <img alt="Admin" src="./assets/Admin.png" width="50px" />
+    <div>Admin</div>
+  </a>
+  <div class="btn-group dropright">
+    <button
+      type="button"
+      class="btn btn-secondary dropdown-toggle btn-user"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      <img alt="Supplier" src="./assets/Supplier.png" width="50px" />
+      <div>Suppliers</div>
+    </button>
+    <div class="dropdown-menu">
+      <home-supplier-dropdown></home-supplier-dropdown>
+    </div>
+  </div>
+  <a
+    [routerLink]="['/create']"
+    role="button"
+    aria-pressed="true"
+    class="btn btn-secondary btn-user"
+  >
+    <img alt="User" src="./assets/User.png" width="50px" />
+    <div>User</div>
+  </a>
+</nav>

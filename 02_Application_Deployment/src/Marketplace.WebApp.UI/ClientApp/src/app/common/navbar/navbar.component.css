@@ -1,0 +1,16 @@
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.nav-link {
+  margin-right: 4px;
+  color: #999;
+  font-weight: 500;
+  color: #333;
+  padding: 0rem;
+}

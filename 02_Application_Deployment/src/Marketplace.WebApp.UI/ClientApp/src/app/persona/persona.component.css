@@ -1,0 +1,48 @@
+[role='main'] {
+  padding-top: 64px; /* Space for fixed navbar */
+  height: 100%;
+  padding-bottom: 20px;
+}
+h1 {
+  text-align: center;
+}
+
+.display-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-1 {
+  flex: 1;
+  color: black;
+  background-color: white;
+  text-align: center;
+}
+.user-type {
+  background-color: #fff;
+  min-height: 150px;
+  padding: 80px 10px 10px;
+  text-align: center;
+  margin: 130px 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: auto;
+}
+
+.image-box {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.image-box img {
+  width: 150px;
+  border-radius: 50%;
+}
+figure {
+  margin: 0;
+}

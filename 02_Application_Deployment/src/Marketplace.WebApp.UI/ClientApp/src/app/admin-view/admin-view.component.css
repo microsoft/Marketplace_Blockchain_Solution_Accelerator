@@ -1,0 +1,17 @@
+/*
+ * Content
+ */
+
+[role='main'] {
+  padding-top: 48px; /* Space for fixed navbar */
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+.chartBox {
+  height: 400;
+}

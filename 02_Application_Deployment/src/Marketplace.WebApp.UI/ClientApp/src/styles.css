@@ -1,0 +1,197 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+
+html,
+body {
+  background-color: #eaedf1;
+}
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+.header {
+  background-color: #fff;
+  color: #777;
+}
+.sidebar {
+  min-width: 80px;
+  max-width: 80px;
+  background-color: #464c4d;
+}
+#content {
+  width: 100%;
+  padding: 0px;
+  min-height: 100vh;
+  transition: all 0.3s;
+}
+.logo {
+  color: #03121f;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+.nav-link {
+  padding-top: 0;
+}
+.user {
+  padding: 1px 6px;
+  border-radius: 25px;
+  border: 1px solid #57b7e4;
+  background-color: #57b7e4;
+  color: #fff;
+  margin-top: 3px;
+  display: inline-block;
+}
+.btn-user {
+  min-width: 80px;
+  max-width: 80px;
+  padding: 0.375rem 0.25rem;
+  border-radius: 0;
+  margin-bottom: 1px;
+  background-color: #464c4d;
+  border: none;
+  border-bottom: 1px solid #81888a;
+}
+.left {
+  float: left;
+}
+.user-text {
+  font-size: 0.9em;
+  line-height: 1em;
+  margin: 0 10px;
+}
+.sm-text {
+  font-size: 0.8em;
+}
+.dropdown-item:hover,
+.dropdown-item:active {
+  color: #333;
+  text-decoration: none;
+  background-color: #ebebeb;
+}
+
+/******* CONTENT ********/
+.nav-row {
+  background-color: #348ada;
+  padding: 15px 0;
+  color: #fff;
+}
+.nav-row a {
+  color: #fff;
+  font-size: 1em;
+  font-weight: 500;
+  margin-right: 25px;
+}
+.sub-nav {
+  background-color: #fff;
+  border-bottom: 1px solid #e3e3e3;
+  padding: 10px 0;
+  color: 000;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+.sub-nav a {
+  color: #2ca0a8;
+}
+
+.parallax-img {
+  background-image: url('assets/beach-tourist.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 -150px;
+  padding: 25px 0px 25px 0px;
+  margin: 0 -15px;
+  min-height: 300px;
+}
+.banner-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3em;
+  font-weight: 400;
+  color: #fff;
+  margin: 80px auto;
+  text-align: center;
+}
+.banner-title .sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.4em;
+  font-weight: 300;
+  color: #fff;
+  margin: 1px auto;
+  text-align: center;
+}
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3em;
+  font-weight: 300;
+  color: #fff;
+}
+
+.user-type {
+  background-color: #fff;
+  padding: 10px;
+  text-align: center;
+  margin: 20px 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+.user-type:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.green {
+  color: #28a745;
+}
+.blue {
+  color: #348ada;
+}
+
+.profile-box {
+  background-color: #fff;
+  min-height: 150px;
+  padding: 10px;
+  margin: 20px 10px;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.box-title {
+  font-size: 1.2em;
+  font-weight: 500;
+  padding: 5px 15px 10px;
+  border-bottom: 1px solid #e4e4e4;
+}
+.desc {
+  font-size: 0.9em;
+  margin: 10px 0 0;
+  font-weight: 600;
+  color: rgb(1, 125, 156);
+}
+.table-responsive thead th,
+.table-striped thead th {
+  border: none;
+}
+.table-responsive td,
+.table-striped td {
+  padding: 10px 2px;
+  font-size: 0.9em;
+}
+.table-responsive tbody tr,
+.table-striped tbody tr {
+  cursor: pointer;
+  padding: 2px 0;
+  background-color: #fff;
+}
+.table-responsive tbody tr:hover,
+.table-striped tbody tr:hover {
+  background-color: rgb(236, 250, 241) !important;
+}
+.APPROVED {
+  background-color: rgb(34, 219, 111);
+}
+.READY {
+  background-color: #007bff;
+}
+.REJECTED {
+  background-color: rgb(236, 167, 77);
+}

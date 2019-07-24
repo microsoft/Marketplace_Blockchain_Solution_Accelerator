@@ -1,0 +1,16 @@
+<div class="d-flex flex-column justify-content-center align-items-center">
+        <h1>
+          Welcome to {{ title }}!
+        </h1>
+        <img width="300" alt="Contoso Logo" src="./assets/contoso-logo.jpeg">
+</div>
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <div>
+        <a [routerLink] = "['/create']">Create Consignment</a>
+      </div>  
+    <span>{{pageTitle}}</span>
+    <div>
+        <home-supplier-dropdown></home-supplier-dropdown>
+    </div>
+</div>
+       

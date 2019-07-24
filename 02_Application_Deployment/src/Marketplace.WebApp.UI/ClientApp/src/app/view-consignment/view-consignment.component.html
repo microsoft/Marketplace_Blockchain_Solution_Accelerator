@@ -1,0 +1,318 @@
+<div class="container-fluid">
+  <div class="row nav-row">
+    <div class="container section-title">Order Details</div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-4 mx-1 mb-2">
+      <button type="button" class="btn btn-primary" (click)="goBack()">
+        <i class="fa fa-chevron-left"></i> Back to list
+      </button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div *ngIf="isAdmin && showStatus">
+    <div class="alert alert-info">Status updated</div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="profile-box">
+        <div class="box-title">
+          {{ pageTitle }}
+        </div>
+        <div class="row">
+          <div class="col-md-9 p-3">
+            <form class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label for="orderId" class="desc"
+                  >Order Id <span class="text-muted"></span
+                ></label>
+                <input
+                  type="orderId"
+                  class="form-control"
+                  id="orderId"
+                  placeholder="OrderId"
+                  [value]="consignment.OrderCode"
+                  [disabled]="true"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="serviceType" class="desc"> Service type </label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="provider"
+                    [value]="consignment.ServiceType"
+                    [disabled]="true"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="state" class="desc">Consignment Status</label>
+                <select
+                  class="custom-select d-block w-100"
+                  id="state"
+                  [disabled]="true"
+                >
+                  <option [value]="consignment.ConsignmentStatus">
+                    {{ consignment.ConsignmentStatus }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="bookingDate" class="desc"
+                  >Booking Date<span class="text-muted"></span
+                ></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="bookingDate"
+                  [value]="consignment.BookingDate | date: 'mediumDate'"
+                  [disabled]="true"
+                />
+              </div>
+
+              <!-- <div class="mb-3">
+                    <label for="orderPrice"> Cost </label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                      </div>
+                      <input type="text" class="form-control" id="orderPrice" placeholder="Order Price" [value]=consignment.Price
+                        [disabled]="true">
+                    </div>
+                  </div> -->
+
+              <!-- <div class="mb-3">
+                        <label for="currency">Currency</label>
+                        <select class="custom-select d-block w-100" id="currency" required [disabled]="true">
+                          <option [value]=consignment.Currency> {{consignment.Currency}} </option>
+                        </select>
+                      </div> -->
+              <!--If service type is activity, then show these fields -->
+              <div *ngIf="consignment.ServiceType == 'ACTIVITY'">
+                <div class="mb-3">
+                  <label for="activityname" class="desc"> Activity Name </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="activityName"
+                      [value]="consignment.ActivityName"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="provider" class="desc"> Supplier </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="provider"
+                      [value]="consignment.Supplier"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="actiivtydate" class="desc"> Activity Date </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="activityDate"
+                      [value]="consignment.ServiceDate | date: 'mediumDate'"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="consignment.ServiceType == 'ACCOMMODATION'">
+                <div class="mb-3">
+                  <label for="hotelName" class="desc"> Hotel Name </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="hotelName"
+                      [value]="consignment.HotelName"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="chekcindate" class="desc"> Checkin Date </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="provider"
+                      [value]="consignment.CheckinDate | date: 'mediumDate'"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="checkoutdate" class="desc"> Checkout Date </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="provider"
+                      [value]="consignment.CheckoutDate | date: 'mediumDate'"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="consignment.ServiceType == 'TRANSPORT'">
+                <div class="mb-3">
+                  <label for="transportProvider" class="desc"> Provider </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="provider"
+                      [value]="consignment.Supplier"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="departureDate" class="desc">
+                    Departure Date
+                  </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="departureDate"
+                      [value]="consignment.DepartureDate | date: 'mediumDate'"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="arrivalDate" class="desc"> Arrival Date </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="arrivalDate"
+                      [value]="consignment.ArrivalDate | date: 'mediumDate'"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="origin" class="desc"> Travelling From </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="origin"
+                      [value]="consignment.Origin"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="destination" class="desc"> Travelling to </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="destination"
+                      [value]="consignment.Destination"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="travellerName" class="desc">
+                    Traveller Name
+                  </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="travellerName"
+                      [value]="consignment.TravellerName"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="age" class="desc"> Age </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="age"
+                      [value]="consignment.Age"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="passengerType" class="desc">
+                    PassengerType
+                  </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="passengerType"
+                      [value]="consignment.PassengerType | titlecase"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mb-4" />
+              <div *ngIf="isAdmin">
+                <button
+                  class="btn btn-success btn-lg mr-4 px-5 mb-2"
+                  (click)="
+                    updateStatus(
+                      consignment.Supplier,
+                      consignment.OrderCode,
+                      consignment.ConsignmentCode,
+                      'APPROVED'
+                    )
+                  "
+                >
+                  Approve
+                </button>
+                <button
+                  class="btn btn-secondary btn-lg mb-2 px-5"
+                  (click)="
+                    updateStatus(
+                      consignment.Supplier,
+                      consignment.OrderCode,
+                      consignment.ConsignmentCode,
+                      'REJECTED'
+                    )
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

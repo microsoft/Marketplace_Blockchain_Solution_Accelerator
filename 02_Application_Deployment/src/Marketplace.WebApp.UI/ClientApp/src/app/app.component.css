@@ -1,0 +1,8 @@
+.body{
+    color: gray;
+}
+
+.container-scroller, .page-body-wrapper, .main-panel, .content-wrapper{
+    height: 100%;
+}
+

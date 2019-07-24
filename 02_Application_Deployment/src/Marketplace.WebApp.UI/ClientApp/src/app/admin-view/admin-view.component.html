@@ -1,0 +1,107 @@
+<div class="container-fluid">
+  <div class="row nav-row">
+    <div class="container section-title">Administrator Dashboard</div>
+  </div>
+</div>
+<div class="container">
+  <h4 class="mt-4">Consignment Summary</h4>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="profile-box">
+        <div class="box-title">
+          Monthly Orders
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <canvas
+              baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+            >
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="profile-box">
+        <div class="box-title">
+          Consignment History
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p class="my-2">Total Consignments</p>
+            <p class="display-2 mb-4 font-weight-light green">
+              <span *ngIf="dataForAdmin"> {{ dataForAdmin.length }} </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h4 class="mt-4">Consignments</h4>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="profile-box">
+        <div class="table-responsive pt-3">
+          <table
+            class="table table-striped table-sm"
+            *ngIf="dataForAdmin && dataForAdmin.length"
+          >
+            <thead>
+              <tr>
+                <th>ConsignmentID</th>
+                <th>OrderId</th>
+                <th>Supplier</th>
+                <th>BookingDate</th>
+                <th>ConsignmentStatus</th>
+                <th>ServiceType</th>
+                <th>ServiceDate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let c of dataForAdmin
+                    | slice
+                      : (page - 1) * pageSize
+                      : (page - 1) * pageSize + pageSize
+                "
+                [routerLink]="['/consignment', c.ConsignmentCode]"
+                [queryParams]="{ isAdmin: false }"
+              >
+                <td>{{ c.ConsignmentCode }}</td>
+                <td>{{ c.OrderCode }}</td>
+                <td>{{ c.Supplier }}</td>
+                <td>{{ c.BookingDate | date: 'mediumDate' }}</td>
+                <td class="text-center">
+                  <span class="badge badge-success {{ c.ConsignmentStatus }}">{{
+                    c.ConsignmentStatus
+                  }}</span>
+                </td>
+                <td>{{ c.ServiceType }}</td>
+                <td>{{ c.ServiceDate | date: 'mediumDate' }}</td>
+              </tr>
+            </tbody>
+            <ngb-pagination
+              [(page)]="page"
+              [pageSize]="pageSize"
+              [collectionSize]="dataForAdmin.length"
+            ></ngb-pagination>
+          </table>
+          <div
+            class="alert alert-dark"
+            *ngIf="dataForAdmin && dataForAdmin.length == 0"
+          >
+            There are no orders to show.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<li role="menuitem" *ngFor="let s of suppliers">
+  <a
+    class="dropdown-item"
+    href="/supplier/{{ s.SupplierName }}"
+    role="button"
+    aria-pressed="true"
+  >
+    {{ s.SupplierName }}</a
+  >
+</li>

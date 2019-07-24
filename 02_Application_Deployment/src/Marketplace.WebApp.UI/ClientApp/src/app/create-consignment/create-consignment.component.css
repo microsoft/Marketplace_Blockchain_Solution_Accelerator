@@ -1,0 +1,32 @@
+.lh-condensed {
+  line-height: 1.25;
+}
+
+[role='main'] {
+  padding-top: 64px; /* Space for fixed navbar */
+}
+
+.field-error {
+  border: 1px solid #ec99a0;
+}
+.profile-box {
+  background-color: #fff;
+  min-height: 150px;
+  padding: 10px;
+  margin: 20px 10px;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.box-title {
+  font-size: 1.2em;
+  font-weight: 500;
+  padding: 5px 15px 10px;
+  border-bottom: 1px solid #e4e4e4;
+}
+.desc {
+  font-size: 0.9em;
+  margin: 10px 0 0;
+  font-weight: 600;
+  color: rgb(1, 125, 156);
+}

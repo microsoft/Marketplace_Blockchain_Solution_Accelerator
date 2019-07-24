@@ -1,0 +1,83 @@
+<div class="container">
+  <h4 class="mt-4">Please select a user to get started</h4>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="user-type">
+        <div class="image-box">
+          <figure>
+            <img
+              class="avatar-1"
+              src="./assets/Supplier.png"
+              alt=""
+              width="200px"
+            />
+          </figure>
+        </div>
+        <h6>Supplier</h6>
+        <div class="btn-group" dropdown>
+          <button
+            id="button-basic"
+            dropdownToggle
+            type="button"
+            class="btn btn-primary dropdown-toggle m-2"
+            aria-controls="dropdown-basic"
+          >
+            Select supplier <span class="caret"></span>
+          </button>
+          <ul
+            id="dropdown-basic"
+            *dropdownMenu
+            class="dropdown-menu"
+            role="menu"
+            aria-labelledby="button-basic"
+          >
+            <li role="menuitem" *ngFor="let s of suppliers">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/supplier', s.SupplierName]"
+              >
+                {{ s.SupplierName }}</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="user-type">
+        <div class="image-box">
+          <figure>
+            <img
+              class="avatar-2"
+              src="./assets/Admin.png"
+              alt=""
+              width="200px"
+            />
+          </figure>
+        </div>
+        <h6>Admin</h6>
+        <a [routerLink]="['/admin']" class="btn btn-primary m-2 px-5"
+          >Admin Dashboard</a
+        >
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="user-type">
+        <div class="image-box">
+          <figure>
+            <img
+              class="avatar-3"
+              src="./assets/User.png"
+              alt=""
+              width="200px"
+            />
+          </figure>
+        </div>
+        <h6>User</h6>
+        <a [routerLink]="['/create']" class="btn btn-primary  m-2 px-5"
+          >Create an order</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

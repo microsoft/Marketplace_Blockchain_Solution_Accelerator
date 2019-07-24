@@ -1,0 +1,456 @@
+<div class="container-fluid">
+  <section class="parallax-img">
+    <div class="banner-title">
+      Enjoy Your Dream Vacation
+      <div class="sub">
+        Start booking your best trip anywhere in the world, all in one place.
+      </div>
+    </div>
+  </section>
+  <div class="row nav-row">
+    <div class="container section-title">New Order Details</div>
+  </div>
+  <div [hidden]="!postError" class="alert alert-danger">
+    {{ postErroMessage }}
+  </div>
+</div>
+<form #form="ngForm" class="needs-validation" (ngSubmit)="onSubmit(form)">
+  <div class="container-fluid sub-nav">
+    <div class="container">
+      <div class="row">
+        <div class="form-inline">
+          <label for="exampleInputEmail1" class="px-3"
+            ><i class="far fa-calendar-alt blue fa-2x pr-2"></i> Booking
+            Date</label
+          >
+          <input
+            type="datetime"
+            class="form-control"
+            id="bookingDate"
+            name="bookingDate"
+            [(ngModel)]="createOrderForm.bookingDate"
+            placeholder="mm/dd/yyyy"
+            bsDatepicker
+            [bsConfig]="{ adaptivePosition: true }"
+            #bookingDateField="ngModel"
+            [disabled]="true"
+            [class.field-error]="form.submitted && bookingDateField.invalid"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [hidden]="!noConsignments" class="alert alert-danger">
+    At least one type of consignment must be filed in for placing an order!
+  </div>
+  <div class="container">
+    <h4 class="mt-4">Start planning your trip</h4>
+    <div class="row">
+      <div class="col-md-3">
+        <div
+          class="user-type"
+          (click)="createOrderForm.hideShowCB = true"
+          name="hideShowCB"
+        >
+          <img alt="Activity" src="./assets/activity.png" />
+          <h6>Add an activity</h6>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div
+          class="user-type"
+          (click)="createOrderForm.hideShowAccoFields = true"
+          name="hideShowAccoFields"
+        >
+          <img alt="Accommodation" src="./assets/accommodations.png" />
+          <h6>Add an accommodation</h6>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div
+          class="user-type"
+          (click)="createOrderForm.hideShowTransportFields = true"
+          name="hideShowTransportFields"
+        >
+          <img alt="Transport" src="./assets/transport.png" />
+          <h6>Add a transport</h6>
+        </div>
+      </div>
+    </div>
+    <!--Panel Activity-->
+    <div class="profile-box" *ngIf="createOrderForm.hideShowCB">
+      <div class="box-title">
+        Activity
+        <button
+          class="btn btn-secondary btn-sm float-right"
+          type="button"
+          (click)="createOrderForm.hideShowCB = false"
+        >
+          Remove
+        </button>
+      </div>
+      <div class="row">
+        <div class="col-md-6 m-3 mb-5">
+          <div class="mb-3">
+            <label for="activityType" class="desc"> Activity Type </label>
+            <div class="input-group">
+              <select
+                class="custom-select d-block w-100"
+                id="activityType"
+                [(ngModel)]="createOrderForm.activityType"
+                name="activityType"
+                #activityType="ngModel"
+                required
+                [class.field-error]="form.submitted && activityType.invalid"
+              >
+                <option *ngFor="let a of activityTypes" [value]="a.value">
+                  {{ a.text }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div
+            [hidden]="!form.submitted || activityType.valid"
+            class="alert alert-danger"
+          >
+            You must select an activity type
+          </div>
+
+          <div class="mb-3">
+            <label for="provider" class="desc"> Select Provider </label>
+
+            <select
+              class="custom-select d-block w-100"
+              id="skyDivers"
+              [(ngModel)]="createOrderForm.provider"
+              name="provider"
+              #provider="ngModel"
+              required
+              [class.field-error]="form.submitted && provider.invalid"
+            >
+              <option *ngFor="let p of skydivingProviders" [value]="p.value">
+                {{ p.text }}
+              </option>
+            </select>
+          </div>
+          <div
+            [hidden]="!form.submitted || provider.valid"
+            class="alert alert-danger"
+          >
+            You must select an activity provider
+          </div>
+
+          <label for="activityDate" class="desc"> Activity Start Date </label>
+          <input
+            type="datetime"
+            class="form-control"
+            id="activityDate"
+            [(ngModel)]="createOrderForm.activityDate"
+            name="activityDate"
+            #activityStartDate="ngModel"
+            required
+            placeholder="mm/dd/yyyy"
+            bsDatepicker
+            [bsConfig]="{ adaptivePosition: true }"
+            [class.field-error]="form.submitted && activityStartDate.invalid"
+          />
+          <div
+            [hidden]="!form.submitted || activityStartDate.valid"
+            class="alert alert-danger"
+          >
+            You must select the activity startdate
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Panel Accommodation-->
+    <div class="profile-box" *ngIf="createOrderForm.hideShowAccoFields">
+      <div class="box-title">
+        Accommodation
+        <button
+          class="btn btn-secondary btn-sm float-right"
+          type="button"
+          (click)="createOrderForm.hideShowAccoFields = false"
+        >
+          Remove
+        </button>
+      </div>
+      <div class="row">
+        <div class="col-md-6 m-3 mb-5">
+          <div class="mb-3">
+            <label for="hotelName" class="desc"> Select Hotel </label>
+            <div class="input-group">
+              <select
+                class="custom-select d-block w-100"
+                id="hotelName"
+                [(ngModel)]="createOrderForm.hotelName"
+                name="hotelName"
+                #hotelField="ngModel"
+                required
+                [class.field-error]="form.submitted && hotelField.invalid"
+              >
+                <option *ngFor="let a of hotelNames" [value]="a.value">
+                  {{ a.text }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div
+            [hidden]="!form.submitted || hotelField.valid"
+            class="alert alert-danger"
+          >
+            Please select a hotel.
+          </div>
+          <!-- <div class="mb-3">
+                <label for="provider"> Select Provider </label>
+                <select class="custom-select d-block w-100" id="skyDivers" required>
+                  <option *ngFor="let p of skydivingProviders" [value]=p.value> {{p.text}} </option>
+                </select>
+              </div> -->
+          <label for="checkinDate" class="desc"> Checkin Date </label>
+          <input
+            type="datetime"
+            class="form-control"
+            id="checkinDate"
+            placeholder="mm/dd/yyyy"
+            [(ngModel)]="createOrderForm.checkinDate"
+            name="checkinDate"
+            #checkinField="ngModel"
+            required
+            bsDatepicker
+            [bsConfig]="{ adaptivePosition: true }"
+            [minDate]="minDate"
+          />
+          <div
+            [hidden]="!form.submitted || checkinField.valid"
+            class="alert alert-danger"
+          >
+            Please enter a checkin date.
+          </div>
+          <label for="checkoutDate" class="desc"> Checkout Date </label>
+          <input
+            type="datetime"
+            class="form-control"
+            id="checkoutDate"
+            placeholder="mm/dd/yyyy"
+            [(ngModel)]="createOrderForm.checkoutDate"
+            name="checkoutDate"
+            bsDatepicker
+            [bsConfig]="{ adaptivePosition: true }"
+            [minDate]="minDate"
+            #checkoutField="ngModel"
+            required
+          />
+          <div
+            [hidden]="!form.submitted || checkoutField.valid"
+            class="alert alert-danger"
+          >
+            Please enter a checkout date.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Panel Transport-->
+    <div class="profile-box" *ngIf="createOrderForm.hideShowTransportFields">
+      <div class="box-title">
+        Transport
+        <button
+          class="btn btn-secondary btn-sm float-right"
+          type="button"
+          (click)="createOrderForm.hideShowTransportFields = false"
+        >
+          Remove
+        </button>
+      </div>
+      <div class="row">
+        <div class="col-md-6 m-3 mb-5">
+          <div class="mb-3">
+            <label for="transportActivityType" class="desc">
+              Select Your Transport
+            </label>
+            <div class="input-group">
+              <select
+                class="custom-select d-block w-100"
+                id="transportActivityType"
+                [(ngModel)]="createOrderForm.transportActivityType"
+                name="transportActivityType"
+                #transportActivityType="ngModel"
+                required
+                [class.field-error]="
+                  form.submitted && transportActivityType.invalid
+                "
+              >
+                <option
+                  *ngFor="let a of transportActivityTypes"
+                  [value]="a.value"
+                >
+                  {{ a.text }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div
+            [hidden]="!form.submitted || transportActivityType.valid"
+            class="alert alert-danger"
+          >
+            Please select a type of transport
+          </div>
+          <div class="mb-3">
+            <label for="transportProvider" class="desc">
+              Select Provider
+            </label>
+            <select
+              class="custom-select d-block w-100"
+              id="transportProvider"
+              [(ngModel)]="createOrderForm.transportProvider"
+              name="transportProvider"
+              #transportProvider="ngModel"
+              required
+              [class.field-error]="form.submitted && transportProvider.invalid"
+            >
+              <option *ngFor="let p of transportProviders" [value]="p.value">
+                {{ p.text }}
+              </option>
+            </select>
+          </div>
+          <div
+            [hidden]="!form.submitted || transportActivityType.valid"
+            class="alert alert-danger"
+          >
+            Please select a service provider
+          </div>
+          <div class="mb-3">
+            <label for="destinations" class="desc"> Select Origin </label>
+            <select
+              class="custom-select d-block w-100"
+              id="origin"
+              [(ngModel)]="createOrderForm.origin"
+              name="origin"
+              #origin="ngModel"
+              required
+              [class.field-error]="form.submitted && origin.invalid"
+            >
+              <option *ngFor="let p of countries" [value]="p"> {{ p }} </option>
+            </select>
+          </div>
+          <div
+            [hidden]="!form.submitted || origin.valid"
+            class="alert alert-danger"
+          >
+            Please select a point of origin
+          </div>
+          <div class="mb-3">
+            <label for="destinations" class="desc"> Select Destination </label>
+            <select
+              class="custom-select d-block w-100"
+              id="destination"
+              [(ngModel)]="createOrderForm.destination"
+              name="destination"
+              #destination="ngModel"
+              required
+              [class.field-error]="form.submitted && destination.invalid"
+            >
+              <option *ngFor="let p of countries" [value]="p"> {{ p }} </option>
+            </select>
+          </div>
+          <div
+            [hidden]="!form.submitted || transportActivityType.valid"
+            class="alert alert-danger"
+          >
+            Please select a destination
+          </div>
+          <div class="mb-3">
+            <label for="departureDate" class="desc"> Departure Date </label>
+            <input
+              type="text"
+              class="form-control"
+              id="departureDate"
+              placeholder="mm/dd/yyyy"
+              bsDatepicker
+              [bsConfig]="{ adaptivePosition: true }"
+              #departureDate="ngModel"
+              required
+              [(ngModel)]="createOrderForm.departureDate"
+              name="departureDate"
+              [minDate]="minDate"
+            />
+          </div>
+          <div
+            [hidden]="!form.submitted || departureDate.valid"
+            class="alert alert-danger"
+          >
+            Please select a destination
+          </div>
+          <div class="mb-3">
+            <label for="arrivalDate" class="desc"> Arrival Date </label>
+            <input
+              type="text"
+              class="form-control"
+              id="arrivalDate"
+              placeholder="mm/dd/yyyy"
+              bsDatepicker
+              [bsConfig]="{ adaptivePosition: true }"
+              [(ngModel)]="createOrderForm.arrivalDate"
+              name="arrivalDate"
+              #arrivalDate="ngModel"
+              [minDate]="minDate"
+            />
+          </div>
+        </div>
+      </div>
+      <div clas="row">
+        <div class="box-title">Traveler Details</div>
+      </div>
+      <div clas="row">
+        <div class="col-md-6 m-3 mb-5">
+          <div class="mb-3">
+            <label for="travellerName" class="desc"> Name </label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                id="travelllerName"
+                #travellerName="ngModel"
+                required
+                [(ngModel)]="createOrderForm.travellerName"
+                name="travellerName"
+              />
+            </div>
+          </div>
+          <div
+            [hidden]="!form.submitted || travellerName.valid"
+            class="alert alert-danger"
+          >
+            Please enter the traveller name
+          </div>
+          <div class="mb-3">
+            <label for="age" class="desc"> Age </label>
+            <div class="input-group">
+              <input
+                type="number"
+                class="form-control"
+                id="age"
+                #age="ngModel"
+                required
+                [(ngModel)]="createOrderForm.age"
+                name="age"
+              />
+            </div>
+          </div>
+          <div
+            [hidden]="!form.submitted || age.valid"
+            class="alert alert-danger"
+          >
+            Please enter the traveller age
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-5">
+      <button class="btn btn-success btn-lg mr-4 px-5 mb-2" type="submit">
+        Save
+      </button>
+      <button class="btn btn-secondary btn-lg mb-2 px-5">Cancel</button>
+    </div>
+  </div>
+</form>
