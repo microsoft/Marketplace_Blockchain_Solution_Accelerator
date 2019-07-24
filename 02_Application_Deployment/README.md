@@ -31,6 +31,30 @@ This project contains a number of components described below.
 
  # Using the Application
 
-# TODO - Complete once the UI is ready
+## Main Page
 
-Walk through application
+To create a new trip, select the user view.
+
+![](../References/mainpage.JPG)
+## Book a Trip
+
+To book a trip and add components to the trip, select the options provided.
+
+![](../References/create_trip.JPG)
+
+## Admin Trips
+
+To view all trips, select the admin view.
+
+![](../References/admin_supplier.JPG)
+
+
+## Supplier View
+
+To view specific supplier trips, select the supplier view.
+
+## Admin Trips
+
+To view all trips, select the admin view.
+
+![](../References/supplier.JPG)
