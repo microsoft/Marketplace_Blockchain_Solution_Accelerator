@@ -45,7 +45,7 @@ After completing this section you will have a smart contract deployed at the spe
 This folder contains the .net services for executing the smart contract, tracking transactions using MongoDB, and serving client requests. The Angular web application is also started and hosted with these services. Service Fabric is used to host this application.
 
 ## Resources
-> A hosted version of the application can be found [here.](http://blockchain-marketplace.eastus.cloudapp.azure.com/), and the video walkthrough can be watched [here.](https://msit.microsoftstream.com/video/ec116de1-8bfc-4858-976e-57d087773fd0)
+> A hosted version of the application can be found [here](http://blockchain-marketplace.eastus.cloudapp.azure.com/), and the video walkthrough can be watched [here.](https://msit.microsoftstream.com/video/ec116de1-8bfc-4858-976e-57d087773fd0)
 
 
 ## License
