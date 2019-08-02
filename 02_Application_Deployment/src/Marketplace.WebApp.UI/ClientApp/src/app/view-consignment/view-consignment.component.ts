@@ -50,7 +50,7 @@ export class ViewConsignmentComponent implements OnInit {
       Quantity: 1,
       Price: 1200,
       Currency: 'USD',
-      HotelName: 'WHotel',
+      HotelName: 'BHotel',
       ArrivalDate: new Date('2019-10-16'),
       DepartureDate: new Date('2019-10-15'),
       TransportActivityType: 'Flight',

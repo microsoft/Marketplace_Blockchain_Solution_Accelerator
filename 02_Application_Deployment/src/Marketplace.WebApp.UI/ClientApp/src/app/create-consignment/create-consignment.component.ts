@@ -33,6 +33,7 @@ export class CreateConsignmentComponent implements OnInit {
 
   createOrderForm: IOrder = {
       bookingDate: new Date(),
+      mainSupplier: null,
       hideShowCB: false,
       hideShowAccoFields: false,
       hideShowTransportFields: false,
@@ -123,13 +124,13 @@ export class CreateConsignmentComponent implements OnInit {
     ],
 
     this.hotelNames = [{
-      text: "WHotel",
-      value: "WHotel",
+      text: "BHotel",
+      value: "BHotel",
       disabled: false
     },
     {
-      text: "NHotel",
-      value: "NHotel",
+      text: "AHotel",
+      value: "AHotel",
       disabled: false
     }]
 
@@ -160,9 +161,9 @@ export class CreateConsignmentComponent implements OnInit {
         postData.orderTotalTax = 0
         postData.orderPriceTotal = postData.orderPrice + postData.orderTotalTax;
         postData.consignments = [];
+        postData.supplier = this.createOrderForm.mainSupplier;
         if(this.createOrderForm.activityType)
         {
-          postData.supplier = this.createOrderForm.provider;
           let consignment: any;
           consignment = {};
           consignment.code = "CNS" + Math.random().toString(10).slice(2, 8);
@@ -181,7 +182,6 @@ export class CreateConsignmentComponent implements OnInit {
         //if hotel name is set, add those fields.
         if(this.createOrderForm.hotelName)
         {
-          postData.supplier = this.createOrderForm.hotelName;
           let consignment: any;
           consignment = {};
           consignment.code = "ACC-" + Math.random().toString(10).slice(2, 8);
@@ -201,7 +201,6 @@ export class CreateConsignmentComponent implements OnInit {
         //create transport fields
         if(this.createOrderForm.transportActivityType)
         {
-          postData.supplier = this.createOrderForm.transportProvider;
           let consignment: any;
           consignment = {};
           consignment.code = "TNS-" + Math.random().toString(10).slice(2, 8);

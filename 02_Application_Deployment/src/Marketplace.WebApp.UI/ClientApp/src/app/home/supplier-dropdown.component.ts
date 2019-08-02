@@ -23,12 +23,12 @@ export class SupplierDropdownComponent {
   getSuppliersHardCoded() {
     let parser: any = {};
     parser.SupplierId = 1;
-    parser.SupplierName = 'WHotel';
+    parser.SupplierName = 'BHotel';
     this.suppliers.push(parser);
 
     parser = {};
     parser.SupplierId = 2;
-    parser.SupplierName = 'NHotel';
+    parser.SupplierName = 'AHotel';
     this.suppliers.push(parser);
 
     parser = {};

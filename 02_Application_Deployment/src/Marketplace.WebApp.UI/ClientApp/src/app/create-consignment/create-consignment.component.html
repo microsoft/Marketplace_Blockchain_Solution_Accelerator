@@ -78,6 +78,70 @@
       </div>
     </div>
     <!--Panel Activity-->
+    <div clas="row ">
+      <div class="box-title">Details</div>
+    </div>
+    <div clas="row">
+      <div class="col-md-6 m-3 ">
+            <label for="provider" class="desc"> Select Primary Provider </label>
+
+            <select
+              class="custom-select d-block w-100"
+              id="skyDivers"
+              [(ngModel)]="createOrderForm.mainSupplier"
+              name="mainSupplier"
+              #provider="ngModel"
+              required
+              [class.field-error]="form.submitted && provider.invalid"
+            >
+              <option *ngFor="let p of hotelNames" [value]="p.value">
+                {{ p.text }}
+              </option>
+            </select>
+          </div>
+      <div class="col-md-6 m-3 mb-5">
+        <div class="mb-3">
+          <label for="travellerName" class="desc"> Name </label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="travelllerName"
+              #travellerName="ngModel"
+              required
+              [(ngModel)]="createOrderForm.travellerName"
+              name="travellerName"
+            />
+          </div>
+        </div>
+        <div
+          [hidden]="!form.submitted || travellerName.valid"
+          class="alert alert-danger"
+        >
+          Please enter the traveller name
+        </div>
+        <div class="mb-3">
+          <label for="age" class="desc"> Age </label>
+          <div class="input-group">
+            <input
+              type="number"
+              class="form-control"
+              id="age"
+              #age="ngModel"
+              required
+              [(ngModel)]="createOrderForm.age"
+              name="age"
+            />
+          </div>
+        </div>
+        <div
+          [hidden]="!form.submitted || age.valid"
+          class="alert alert-danger"
+        >
+          Please enter the traveller age
+        </div>
+      </div>
+    </div>
     <div class="profile-box" *ngIf="createOrderForm.hideShowCB">
       <div class="box-title">
         Activity
@@ -395,53 +459,6 @@
               #arrivalDate="ngModel"
               [minDate]="minDate"
             />
-          </div>
-        </div>
-      </div>
-      <div clas="row">
-        <div class="box-title">Traveler Details</div>
-      </div>
-      <div clas="row">
-        <div class="col-md-6 m-3 mb-5">
-          <div class="mb-3">
-            <label for="travellerName" class="desc"> Name </label>
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control"
-                id="travelllerName"
-                #travellerName="ngModel"
-                required
-                [(ngModel)]="createOrderForm.travellerName"
-                name="travellerName"
-              />
-            </div>
-          </div>
-          <div
-            [hidden]="!form.submitted || travellerName.valid"
-            class="alert alert-danger"
-          >
-            Please enter the traveller name
-          </div>
-          <div class="mb-3">
-            <label for="age" class="desc"> Age </label>
-            <div class="input-group">
-              <input
-                type="number"
-                class="form-control"
-                id="age"
-                #age="ngModel"
-                required
-                [(ngModel)]="createOrderForm.age"
-                name="age"
-              />
-            </div>
-          </div>
-          <div
-            [hidden]="!form.submitted || age.valid"
-            class="alert alert-danger"
-          >
-            Please enter the traveller age
           </div>
         </div>
       </div>

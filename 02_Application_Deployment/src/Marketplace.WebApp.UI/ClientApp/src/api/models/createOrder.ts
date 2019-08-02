@@ -1,4 +1,5 @@
 export interface IOrder{
+    mainSupplier: string;
     checkoutDate: Date;
     checkinDate: Date;
     bookingDate: Date,
